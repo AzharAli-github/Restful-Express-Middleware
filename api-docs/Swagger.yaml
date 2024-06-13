@@ -1,0 +1,80 @@
+swagger: "2.0"
+info:
+  description: USER API
+  version: 1.0.0
+  title: A User API
+host: localhost:3000
+basePath: /api/v1
+schemes:
+  - http
+tags:
+  - name: USER Details
+  description: Display details of users
+  
+path:
+  /users:
+  get:
+    tags:
+    - ALl users
+    summary:
+      Retrieve all users
+    security: []
+    
+  response:
+  '200':
+    description: Succesful Operation
+  post:
+    tags:
+      - Create a new user
+      
+    parameters:
+    -in: body
+    name: body
+    required: true
+    schema:
+      type: string
+    response:
+    '201':
+      description: Succesful Operation
+      
+  delete:
+    tags:
+      - Users
+    summary: Delete a specific user
+    description: Delete a user with specified id in path
+    parameters:
+      - name: id
+        in: path
+        description: ID of user to be deleted
+        required: true
+        type: integer
+        format: int64
+    response:
+      '200':
+      description: succesful operation
+      '400':
+      decription: invalid id
+      '404':
+      description: User Not Found
+  
+  put:
+    tags: 
+      - Users
+    summary: Update a specific user based on id
+    description: Update values of a particular user baseed on id
+    parameters:
+      - in: body
+      name: body
+      description: User object needs to be updated to the list
+      required: true
+      schema:
+        type: integer
+      - name: id
+        in: path
+        description: ID of user to be deleted
+        required: true
+        type: integer
+        format: int64
+    response:
+    '201':
+    description: Succesful Operation
